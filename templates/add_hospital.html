@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="card-body">
+<form method="post">
+    {% csrf_token %}
+    <h5>Add Hospital</h5>
+    <div class="form-row-last">
+    {{form|crispy}}
+    <input type="submit" name="submit" class="submit" value="submit">
+    </div>
+</form>
+</div>
+
+
+{% endblock %}
