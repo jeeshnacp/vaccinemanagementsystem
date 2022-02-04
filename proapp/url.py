@@ -11,6 +11,6 @@ urlpatterns = [
      path('nurselogin',views.nurselogin,name='nurselogin'),
      path('userlogin',views.userlogin,name='userlogin'),
      path('nurseregister',views.nurse_register,name='nurseregister'),
-     path('form',adminviews.add_hospital,name='form')
+     path('Add_hospital',adminviews.add_hospital,name='Add_hospital')
 ]
 
