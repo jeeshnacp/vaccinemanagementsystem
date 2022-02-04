@@ -293,7 +293,7 @@
 <!--            </a>-->
 <!--          </li>-->
           <li>
-            <a href="components-accordion.html">
+            <a href="{% url 'viewnurse' %}">
               <i class=""></i><span>View Nurse</span>
             </a>
           </li>
@@ -372,7 +372,7 @@
             </a>
           </li>
           <li>
-            <a href="forms-layouts.html">
+            <a href="{% url 'viewuser' %}">
               <i class=""></i><span>View User</span>
             </a>
           </li>
@@ -439,12 +439,12 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{% url 'add hospital' %}">
+            <a href="{% url 'Add_hospital' %}">
               <i class=""></i><span>Add Hospital</span>
             </a>
           </li>
           <li>
-            <a href="icons-remix.html">
+            <a href="{% url 'viewhospital' %}">
               <i class=""></i><span>View Hospitals</span>
             </a>
           </li>
@@ -605,8 +605,8 @@
           <div class="row">
 
             <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
+            <div class="col-xxl-4 col-md-12">
+<!--              <div class="card info-card sales-card">-->
 
 <!--                <div class="filter">-->
 <!--                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>-->
@@ -621,7 +621,7 @@
 <!--                  </ul>-->
 <!--                </div>-->
 
-                <div class="card-body">
+<!--                <div class="card-body">-->
                   {% block content %}
 
                   {% endblock %}

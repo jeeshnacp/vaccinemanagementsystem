@@ -23,14 +23,14 @@ class nurse(models.Model):
     login=models.ForeignKey(Login,on_delete=models.CASCADE,null=True)
     Hospital_name=models.ForeignKey(hospital,on_delete=models.CASCADE,null=True)
     def __str__(self):
-        return self.Name
+        return self.Nurse_Name
 
 class user(models.Model):
-    User_Name=models.CharField(max_length=20)
+    Name=models.CharField(max_length=20)
     contact_no = models.IntegerField()
     Address=models.TextField()
     child_name=models.CharField(max_length=20)
-    log=models.ForeignKey(Login,on_delete=models.CASCADE)
+    login=models.ForeignKey(Login,on_delete=models.CASCADE)
     child_age=models.IntegerField()
     child_gender=models.CharField(max_length=20)
     recent_vaccinations=models.IntegerField()

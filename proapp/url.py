@@ -11,6 +11,11 @@ urlpatterns = [
      path('nurselogin',views.nurselogin,name='nurselogin'),
      path('userlogin',views.userlogin,name='userlogin'),
      path('nurseregister',views.nurse_register,name='nurseregister'),
-     path('Add_hospital',adminviews.add_hospital,name='Add_hospital')
+     path('userregister',views.user_register,name='userregister'),
+     path('Add_hospital',adminviews.add_hospital,name='Add_hospital'),
+     path('viewnurse',adminviews.view_nurse,name='viewnurse'),
+     path('viewuser', adminviews.view_user, name='viewuser'),
+     path('viewhospital', adminviews.view_hospital, name='viewhospital'),
+
 ]
 
