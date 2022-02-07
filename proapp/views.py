@@ -17,6 +17,8 @@ def home(request):
 def login(request):
     return render(request,'login_index.html')
 
+
+
 def userform(request):
     return  render(request,'UserRegistrationindex.html')
 def nurselogin(request):

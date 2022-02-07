@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from proapp.models import Login,nurse,hospital,user
+from proapp.models import Login, nurse, hospital, user, vaccine, complaints
 
 
 class loginRegister(UserCreationForm):
@@ -29,3 +29,13 @@ class userregister(forms.ModelForm):
     class Meta:
         model= user
         fields=('Name','contact_no','Address','child_name','child_age','child_gender','recent_vaccinations')
+
+class vaccineform(forms.ModelForm):
+    class Meta:
+        model= vaccine
+        fields=('vaccine_name','vaccine_type','description')
+
+class complaintform(forms.ModelForm):
+    class Meta:
+        model=complaints
+        fields=('subject','complaint','date')

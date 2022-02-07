@@ -23,7 +23,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">View Hospital</h2>
+					<h2 class="heading-section">View Vaccine</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -32,10 +32,9 @@
 						<table class="table">
 						  <thead class="thead-dark">
 						    <tr>
-						      <th>Hospital_Name</th>
-						      <th>place</th>
-						      <th>contact_no</th>
-						      <th>email</th>
+						      <th>vaccine_name</th>
+						      <th>vaccine_type</th>
+						      <th>description</th>
 
 						    </tr>
 						  </thead>
@@ -43,10 +42,9 @@
 						  {% for i in data %}
 						    <tr class="alert" role="alert">
 <!--						      <th scope="row">001</th>-->
-						      <td>{{i.Hospital_Name}}</td>
-						      <td>{{i.place}}</td>
-						      <td>{{i.contact_no}}</td>
-								<td>{{i.email}}</td>
+						      <td>{{i.vaccine_name}}</td>
+						      <td>{{i.vaccine_type}}</td>
+						      <td>{{i.description}}</td>
 <!--						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">-->
 <!--				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>-->
 <!--				          	</a>-->

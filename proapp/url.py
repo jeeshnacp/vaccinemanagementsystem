@@ -1,6 +1,6 @@
 from django.urls import path
 
-from proapp import views,adminviews
+from proapp import views,adminviews,Nurseviews
 
 
 urlpatterns = [
@@ -16,6 +16,11 @@ urlpatterns = [
      path('viewnurse',adminviews.view_nurse,name='viewnurse'),
      path('viewuser', adminviews.view_user, name='viewuser'),
      path('viewhospital', adminviews.view_hospital, name='viewhospital'),
+     path('add_vaccine',adminviews.add_vaccine,name='add_vaccine'),
+     path('viewvaccine',adminviews.view_vaccine,name='viewvaccine'),
+     path('nurse_home',Nurseviews.nurse_home,name='nurse_home'),
+     path('addcomplaints',Nurseviews.add_complaints,name='addcomplaints'),
+     path('viewcomplaints',adminviews.view_complaints,name='viewcomplaints'),
 
 ]
 
