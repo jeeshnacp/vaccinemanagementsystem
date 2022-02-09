@@ -42,17 +42,14 @@ class reportcard(models.Model):
     vaccine=models.CharField(max_length=20)
     patient=models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.Name
 
 class schedule(models.Model):
-    hospital=models.CharField(max_length=50)
+    Hospital=models.ForeignKey(hospital,on_delete=models.CASCADE,null=True)
     date=models.DateField()
     start_time=models.TimeField()
     end_time=models.TimeField()
 
-    def __str__(self):
-        return self.Name
+
 
 class vaccine(models.Model):
     vaccine_name=models.CharField(max_length=50)
@@ -69,8 +66,7 @@ class appointment(models.Model):
     vaccinated=models.CharField(max_length=20)
     status=models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.Name
+
 
 class complaints(models.Model):
     users=models.ForeignKey(Login,on_delete=models.CASCADE,null=True)

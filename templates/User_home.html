@@ -283,13 +283,13 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-grid-3x3-gap"></i><span>Vaccine</span>
+          <i class="bi bi-grid-3x3-gap"></i><span>Profile</span>
           <i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{% url 'viewvaccines' %}">
-              <i class=""></i><span>View Vaccine</span>
+            <a href="">
+              <i class=""></i><span>My Profile</span>
             </a>
           </li>
         </ul>
@@ -298,13 +298,18 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-grid-3x3-gap"></i><span>User</span>
+          <i class="bi bi-grid-3x3-gap"></i><span>Appointments</span>
           <i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav1" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{% url 'nurseuser' %}">
-              <i class=""></i><span>View User</span>
+              <i class=""></i><span>View Schedules</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'nurseuser' %}">
+              <i class=""></i><span>Appointments</span>
             </a>
           </li>
         </ul>
@@ -312,7 +317,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-grid-3x3-gap"></i><span>Hospital</span>
+          <i class="bi bi-grid-3x3-gap"></i><span>Complaints</span>
           <i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -321,11 +326,20 @@
 <!--      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">-->
 <!--          <li>-->
 <!--            <a href="forms-elements.html">-->
-              <i class=""></i><span>View Hospital</span>
+              <i class=""></i><span>Register Complaints</span>
+            </a>
+          </li>
+           <li>
+            <a href="{% url 'nursehospital' %}">
+<!--      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">-->
+<!--          <li>-->
+<!--            <a href="forms-elements.html">-->
+              <i class=""></i><span>Reply</span>
             </a>
           </li>
         </ul>
       </li>
+    </ul>
 <!--          <li>-->
 <!--            <a href="">-->
 <!--              <i class=""></i><span>Update Appointment</span>-->
@@ -394,32 +408,34 @@
 <!--         </ul>-->
 <!--      </li>&lt;!&ndash; End Components Nav &ndash;&gt;-->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-grid-3x3-gap"></i><span>Appointments</span>
-          <i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{% url 'addschedule' %}">
-              <i class=""></i><span>Add Schedule</span>
-            </a>
-          </li>
-<!--          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">-->
-          <li>
-            <a href="forms-elements.html">
-              <i class=""></i><span>Vaccination Schedules</span>
-            </a>
-          </li>
-<!--          </ul>-->
-<!--            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">-->
-          <li>
-            <a href="forms-elements.html">
-              <i class=""></i><span>Appointments</span>
-            </a>
-          </li>
-        </ul>
-      </li>
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">-->
+<!--          <i class="bi bi-grid-3x3-gap"></i><span>ReportCard</span>-->
+<!--          <i class="bi bi-chevron-down ms-auto"></i>-->
+<!--        </a>-->
+<!--        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">-->
+<!--          <li>-->
+<!--            <a href="{% url 'addschedule' %}">-->
+<!--              <i class=""></i><span>view Reportcard</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </li>-->
+<!--&lt;!&ndash;          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">&ndash;&gt;-->
+<!--          <li>-->
+<!--            <a href="forms-elements.html">-->
+<!--              <i class=""></i><span>Vaccination Schedules</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--&lt;!&ndash;          </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">&ndash;&gt;-->
+<!--          <li>-->
+<!--            <a href="forms-elements.html">-->
+<!--              <i class=""></i><span>Appointments</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </li>-->
 
 
 <!--          <li>-->
@@ -461,15 +477,16 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-grid-3x3-gap"></i><span>Complaints</span>
+          <i class="bi bi-grid-3x3-gap"></i><span>ReportCard</span>
           <i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{% url 'addcomplaints' %}">
-              <i class=""></i><span>Register Complaints</span>
+              <i class=""></i><span>View ReportCard</span>
             </a>
           </li>
+        </ul>
            <li>
             <a href="charts-chartjs.html">
               <i class=""></i><span>Replys</span>

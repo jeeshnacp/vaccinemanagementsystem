@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 
-from proapp.forms import hospitalform, vaccineform
-from proapp.models import nurse, user, hospital, vaccine,complaints
+from proapp.forms import hospitalform, vaccineform, reportcardform
+from proapp.models import nurse, user, hospital, vaccine, complaints, reportcard
 
 
 def add_hospital(request):
@@ -45,5 +45,22 @@ def view_vaccine(request):
 def view_complaints(request):
     data=complaints.objects.all()
     return render(request,'View_complaints.html',{'data':data})
+
+def add_reportcard(request):
+    form=reportcardform()
+    if request.method=='POST':
+        form=reportcardform(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request,'successfully added')
+            return redirect('admin_home')
+    return render(request,'add_reportcard.html',{'form':form})
+
+def view_reportcard(request):
+    data=reportcard.objects.all()
+    return render(request,'View_reportcard.html',{'data':data})
+
+
+
 
 

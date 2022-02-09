@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from proapp.models import Login, nurse, hospital, user, vaccine, complaints
+from proapp.models import Login, nurse, hospital, user, vaccine, complaints, schedule, reportcard
 
 
 class loginRegister(UserCreationForm):
@@ -39,3 +39,13 @@ class complaintform(forms.ModelForm):
     class Meta:
         model=complaints
         fields=('subject','complaint','date')
+
+class scheduleform(forms.ModelForm):
+    class Meta:
+        model=schedule
+        fields=('Hospital','date','start_time','end_time')
+
+class reportcardform(forms.ModelForm):
+    class Meta:
+        model=reportcard
+        fields=('vaccine','patient')
