@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% block content %}
-<!doctype html>
+
 {% load static %}
 
 <html lang="en">
@@ -32,26 +32,33 @@
 						<table class="table">
 						  <thead class="thead-dark">
 						    <tr>
+<!--						      <th> user</th>-->
 						      <th>Name</th>
-						      <th>Contact_no</th>
+						      <th>contact_no</th>
 						      <th>Address</th>
-						      <th>child_name</th>
-						      <th> child_age</th>
+						      <th> child_name</th>
+								<th>child_age</th>
 								<th>child_gender</th>
-								<th>recent_vaccinations</th>
+								<th>Delete</th>
+<!--								<th>recent_vaccinations</th>-->
 						    </tr>
 						  </thead>
 						  <tbody>
 						  {% for i in data %}
 						    <tr class="alert" role="alert">
 <!--						      <th scope="row">001</th>-->
+<!--						      <td>{{i.user}}</td>-->
 						      <td>{{i.Name}}</td>
-						      <td>{{i.Contact_no}}</td>
-						      <td>{{i.Address}}</td>
+						      <td>{{i.contact_no}}</td>
+								<td>{{i.Address}}</td>
 								<td>{{i.child_name}}</td>
 								<td>{{i.child_age}}</td>
 								<td>{{i.child_gender}}</td>
-								<td>{{i.recent_vaccinations}}</td>
+								<td><a href="{% url 'deleteuser' i.id %}"><button class="btn btn-success">Delete</button></a></td>
+<!--								<td>{{i.recent_vaccinations}}</td>-->
+<!--								<td><a href="{% url 'updatenurse' i.id %}"><button class="btn btn-success">Update</button></a></td>-->
+<!--&lt;!&ndash;&ndash;&gt;                        	<td><a href="{% url 'deletenurse' i.id %}"><button class="btn btn-success">Delete</button></a></td>-->
+
 <!--						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">-->
 <!--				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>-->
 <!--				          	</a>-->

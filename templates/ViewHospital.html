@@ -36,6 +36,8 @@
 						      <th>place</th>
 						      <th>contact_no</th>
 						      <th>email</th>
+								<th>Update</th>
+								<th>Delete</th>
 
 						    </tr>
 						  </thead>
@@ -47,6 +49,9 @@
 						      <td>{{i.place}}</td>
 						      <td>{{i.contact_no}}</td>
 								<td>{{i.email}}</td>
+								<td><a href="{% url 'updatehospital' i.id %}"><button class="btn btn-success">Update</button></a></td>
+<!---->                        	<td><a href="{% url 'deletehospital' i.id %}"><button class="btn btn-success">Delete</button></a></td>
+
 <!--						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">-->
 <!--				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>-->
 <!--				          	</a>-->

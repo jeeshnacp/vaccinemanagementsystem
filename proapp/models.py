@@ -16,24 +16,25 @@ class hospital(models.Model):
         return self.Hospital_Name
 
 class nurse(models.Model):
+    user=models.ForeignKey(Login,on_delete=models.CASCADE,null=True)
     Nurse_Name=models.CharField(max_length=20)
     Contact_no=models.CharField(max_length=50)
     Address=models.TextField()
     Email=models.EmailField()
-    login=models.ForeignKey(Login,on_delete=models.CASCADE,null=True)
-    Hospital_name=models.ForeignKey(hospital,on_delete=models.CASCADE,null=True)
+    Hospital_name=models.ForeignKey(hospital,on_delete=models.CASCADE)
     def __str__(self):
         return self.Nurse_Name
 
-class user(models.Model):
+class User(models.Model):
+
+    user=models.ForeignKey(Login,on_delete=models.CASCADE,null=True)
     Name=models.CharField(max_length=20)
     contact_no = models.IntegerField()
     Address=models.TextField()
     child_name=models.CharField(max_length=20)
-    login=models.ForeignKey(Login,on_delete=models.CASCADE)
     child_age=models.IntegerField()
     child_gender=models.CharField(max_length=20)
-    recent_vaccinations=models.IntegerField()
+    recent_vaccinations=models.TextField()
 
     def __str__(self):
         return self.Name
@@ -44,7 +45,7 @@ class reportcard(models.Model):
 
 
 class schedule(models.Model):
-    Hospital=models.ForeignKey(hospital,on_delete=models.CASCADE,null=True)
+    Hospital=models.ForeignKey(hospital,on_delete=models.CASCADE)
     date=models.DateField()
     start_time=models.TimeField()
     end_time=models.TimeField()

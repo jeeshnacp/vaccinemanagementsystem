@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 
 
 # Create your views here
-from proapp.forms import nurseregister, loginRegister,userregister
+from proapp.forms import userregister,loginRegister,nurseregister
 from proapp.models import nurse
 
 

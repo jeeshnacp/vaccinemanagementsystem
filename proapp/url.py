@@ -19,7 +19,13 @@ urlpatterns = [
     path('viewvaccine', adminviews.view_vaccine, name='viewvaccine'),
     path('addreportcard', adminviews.add_reportcard, name='addreportcard'),
     path('viewreportcard', adminviews.view_reportcard, name='viewreportcard'),
-
+    path('updatenurse/<int:id>/',adminviews.update_nurse,name='updatenurse'),
+    path('deletenurse/<int:id>/',adminviews.delete_nurse,name='deletenurse'),
+    path('updatehospital/<int:id>/',adminviews.update_hospital,name='updatehospital'),
+    path('deletehospital/<int:id>/', adminviews.delete_hospital, name='deletehospital'),
+    path('deleteuser/<int:id>/',adminviews.delete_user,name='deleteuser'),
+    path('updatevaccine/<int:id>/', adminviews.update_vaccine, name='updatevaccine'),
+    path('deletevaccine/<int:id>/', adminviews.delete_vaccine, name='deletevaccine'),
 
 
     path('nurse_home', Nurseviews.nurse_home, name='nurse_home'),
@@ -29,10 +35,11 @@ urlpatterns = [
     path('nurseuser', Nurseviews.nurse_view_user, name='nurseuser'),
     path('nursehospital', Nurseviews.nurse_view_hospital, name='nursehospital'),
     path('addschedule', Nurseviews.nurse_add_schedule, name='addschedule'),
+    path('viewschedule',Nurseviews.nurse_view_schedule,name='viewschedule'),
 
 
 
     path('user_home', Userviews.user_home, name='user_home'),
-    path('userprofile',Userviews.user_profile,name='userprofile')
+    # path('userprofile',Userviews.user_profile,name='userprofile')
 
 ]

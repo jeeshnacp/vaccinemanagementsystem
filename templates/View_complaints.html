@@ -35,6 +35,7 @@
 						      <th>subject</th>
 						      <th>date</th>
 						      <th>complaint</th>
+								<th>Reply</th>
 
 						    </tr>
 						  </thead>
@@ -45,6 +46,13 @@
 						      <td>{{i.subject}}</td>
 						      <td>{{i.date}}</td>
 						      <td>{{i.complaint}}</td>
+								<td>
+									{% if i.reply==None %}
+									<a href="{% url'reply_complaint' %}">Reply Now</a>
+									{% else %}
+									{{i.reply %}}
+									{% endif %}
+								</td>
 <!--						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">-->
 <!--				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>-->
 <!--				          	</a>-->
