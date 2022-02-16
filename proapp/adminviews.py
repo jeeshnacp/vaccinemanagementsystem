@@ -13,20 +13,20 @@ def add_hospital(request):
             form.save()
             messages.info(request,'successfully added')
             return redirect('admin_home')
-    return render(request,'add_hospital.html',{'form':form})
+    return render(request,'admin_temp/add_hospital.html',{'form':form})
 
 
 def view_nurse(request):
     data=nurse.objects.all()
-    return render(request,'ViewNurse.html',{'data':data})
+    return render(request,'admin_temp/ViewNurse.html',{'data':data})
 
 def view_user(request):
     data=User.objects.all()
-    return render(request,'ViewUser.html',{'data':data})
+    return render(request,'admin_temp/ViewUser.html',{'data':data})
 
 def view_hospital(request):
     data=hospital.objects.all()
-    return render(request,'ViewHospital.html',{'data':data})
+    return render(request,'admin_temp/ViewHospital.html',{'data':data})
 
 def add_vaccine(request):
     form=vaccineform()
@@ -36,15 +36,15 @@ def add_vaccine(request):
             form.save()
             messages.info(request, 'successfully added')
             return redirect('admin_home')
-    return render(request, 'add_vaccine.html', {'form': form})
+    return render(request, 'admin_temp/add_vaccine.html', {'form': form})
 
 def view_vaccine(request):
     data=vaccine.objects.all()
-    return render(request,'View_Vaccine.html',{'data':data})
+    return render(request,'admin_temp/View_Vaccine.html',{'data':data})
 
 def view_complaints(request):
     data=complaints.objects.all()
-    return render(request,'View_complaints.html',{'data':data})
+    return render(request,'admin_temp/View_complaints.html',{'data':data})
 
 def add_reportcard(request):
     form=reportcardform()
@@ -54,11 +54,11 @@ def add_reportcard(request):
             form.save()
             messages.info(request,'successfully added')
             return redirect('admin_home')
-    return render(request,'add_reportcard.html',{'form':form})
+    return render(request,'admin_temp/add_reportcard.html',{'form':form})
 
 def view_reportcard(request):
     data=reportcard.objects.all()
-    return render(request,'View_reportcard.html',{'data':data})
+    return render(request,'admin_temp/View_reportcard.html',{'data':data})
 
 def update_nurse(request,id):
     n=nurse.objects.get(id=id)
@@ -69,7 +69,7 @@ def update_nurse(request,id):
             return redirect('viewnurse')
     else:
         form=nurseregister(request.POST or None,instance=n)
-    return render(request,'Nurse_update.html',{'form':form})
+    return render(request,'admin_temp/Nurse_update.html',{'form':form})
 
 def delete_nurse(request,id=None):
     data = nurse.objects.get(id=id)
@@ -91,7 +91,7 @@ def update_hospital(request,id):
             return redirect('viewhospital')
     else:
         form=hospitalform(request.POST or None,instance=n)
-    return render(request,'hospital_update.html',{'form':form})
+    return render(request,'add_hospital.html',{'form':form})
 
 def delete_user(request,id=None):
     data =User.objects.get(id=id)
@@ -116,6 +116,15 @@ def delete_vaccine(request,id=None):
     return redirect('viewvaccine')
 
 
+def reply_complaint(request, id):
+    complaint=complaints.objects.get(id=id)
+    if request.method=='POST':
+        r=request.POST.get('reply')
+        complaint.reply=r
+        complaint.save()
+        messages.info(request,'Reply send for complaint')
+        return redirect('view_complaint')
+    return render(request,'reply_complaint.html',{'complaint':complaint})
 
 
 

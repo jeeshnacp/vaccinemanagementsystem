@@ -1,6 +1,5 @@
-{% extends 'index.html' %}
+{% extends 'User_home.html' %}
 {% block content %}
-<!doctype html>
 {% load static %}
 
 <html lang="en">
@@ -23,7 +22,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">View Complaints</h2>
+					<h2 class="heading-section">View Schedule</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -32,27 +31,26 @@
 						<table class="table">
 						  <thead class="thead-dark">
 						    <tr>
-						      <th>subject</th>
+						      <th>Hospital</th>
 						      <th>date</th>
-						      <th>complaint</th>
-								<th>Reply</th>
-
+						      <th>start_time</th>
+								<th>end_time</th>
+<!--								<th>Update</th>-->
+<!--								<th>Delete</th>-->
+<!---->
 						    </tr>
 						  </thead>
 						  <tbody>
 						  {% for i in data %}
 						    <tr class="alert" role="alert">
 <!--						      <th scope="row">001</th>-->
-						      <td>{{i.subject}}</td>
+						      <td>{{i.Hospital}}</td>
 						      <td>{{i.date}}</td>
-						      <td>{{i.complaint}}</td>
-								<td>
-									{% if i.reply==None %}
-									<a href="{% url'reply_complaint' %}">Reply Now</a>
-									{% else %}
-									{{i.reply %}}
-									{% endif %}
-								</td>
+						      <td>{{i.start_time}}</td>
+								<td>{{i.end_time}}</td>
+<!--								<td><a href="{% url 'updateschedule' i.id %}"><button class="btn btn-success">Update</button></a></td>-->
+<!--&lt;!&ndash;&ndash;&gt;                        	<td><a href="{% url 'deleteschedule' i.id %}"><button class="btn btn-success">Delete</button></a></td>-->
+
 <!--						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">-->
 <!--				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>-->
 <!--				          	</a>-->

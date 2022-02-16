@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 
 from proapp.forms import complaintform, scheduleform
-from proapp.models import vaccine, User, hospital, schedule
+from proapp.models import vaccine, User, hospital, schedule, complaints
 
 
 def nurse_home(request):
@@ -47,6 +47,21 @@ def nurse_view_schedule(request):
     data=schedule.objects.all()
     return render(request,'Nurse_View_Schedule.html',{'data':data})
 
+def update_schedule(request,id):
+    n=schedule.objects.get(id=id)
+    if request.method=='POST':
+        form=scheduleform(request.POST or None,instance=n)
+        if form.is_valid():
+            form.save()
+            return redirect('viewschedule')
+    else:
+        form=scheduleform(request.POST or None,instance=n)
+    return render(request,'Nurse_Add_Schedule.html',{'form':form})
+
+def delete_schedule(request,id=None):
+    data =schedule.objects.get(id=id)
+    data.delete()
+    return redirect('viewschedule')
 
 
 

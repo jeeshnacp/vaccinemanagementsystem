@@ -36,6 +36,8 @@
 						      <th>date</th>
 						      <th>start_time</th>
 								<th>end_time</th>
+								<th>Update</th>
+								<th>Delete</th>
 
 						    </tr>
 						  </thead>
@@ -47,6 +49,9 @@
 						      <td>{{i.date}}</td>
 						      <td>{{i.start_time}}</td>
 								<td>{{i.end_time}}</td>
+								<td><a href="{% url 'updateschedule' i.id %}"><button class="btn btn-success">Update</button></a></td>
+<!---->                        	<td><a href="{% url 'deleteschedule' i.id %}"><button class="btn btn-success">Delete</button></a></td>
+
 <!--						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">-->
 <!--				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>-->
 <!--				          	</a>-->
