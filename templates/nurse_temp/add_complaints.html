@@ -146,6 +146,11 @@
                   <div class="col-sm-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
+                {% for message in messages %}
+      <div class="alert alert-primary" role="alert">
+        {{message}}
+      </div>
+    {% endfor %}
 <!--                </div>-->
 
               </form><!-- End General Form Elements -->

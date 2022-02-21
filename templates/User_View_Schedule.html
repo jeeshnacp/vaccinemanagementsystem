@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
   	<title>Table 02</title>
     <meta charset="utf-8">
@@ -32,9 +32,10 @@
 						  <thead class="thead-dark">
 						    <tr>
 						      <th>Hospital</th>
-						      <th>date</th>
-						      <th>start_time</th>
-								<th>end_time</th>
+						      <th>Date</th>
+						      <th>Start_time</th>
+								<th>End_time</th>
+								<th>Take Appointment</th>
 <!--								<th>Update</th>-->
 <!--								<th>Delete</th>-->
 <!---->
@@ -48,6 +49,7 @@
 						      <td>{{i.date}}</td>
 						      <td>{{i.start_time}}</td>
 								<td>{{i.end_time}}</td>
+								<td><button type="submit"><a href="{% url 'takeappointment' i.id %}">Book Appointment</button></a></td>
 <!--								<td><a href="{% url 'updateschedule' i.id %}"><button class="btn btn-success">Update</button></a></td>-->
 <!--&lt;!&ndash;&ndash;&gt;                        	<td><a href="{% url 'deleteschedule' i.id %}"><button class="btn btn-success">Delete</button></a></td>-->
 

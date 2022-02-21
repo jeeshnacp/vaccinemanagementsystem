@@ -1,7 +1,16 @@
+import re
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import ValidationError
 
 from proapp.models import Login,nurse, hospital, User, vaccine, complaints, schedule, reportcard
+
+
+
+def phone_number_validator(value):
+    if not re.compile(r'^[7-9]\d{9}$').match(value):
+        raise ValidationError('This is not valid number')
 
 
 class loginRegister(UserCreationForm):
@@ -15,11 +24,13 @@ class loginRegister(UserCreationForm):
 
 #
 class nurseregister(forms.ModelForm):
+    Contact_no=forms.CharField(validators=[phone_number_validator])
     class Meta:
         model = nurse
         fields = ('Nurse_Name', 'Contact_no', 'Address', 'Email','Hospital_name')
 
 class hospitalform(forms.ModelForm):
+    contact_no = forms.CharField(validators=[phone_number_validator])
     class Meta:
         model= hospital
         fields=('Hospital_Name','place','contact_no','email')

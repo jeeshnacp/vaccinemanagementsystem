@@ -5,7 +5,8 @@ from proapp import views, adminviews, Nurseviews, Userviews
 urlpatterns = [
     path('admin_home', views.image, name='admin_home'),
     path('', views.home, name='home1'),
-    path('login', views.login_view, name='login'),
+    path('login_view', views.login_view, name='login_view'),
+    path('logout',views.logout_view,name='logout'),
     path('userform', views.userform, name='userform'),
     path('nurselogin', views.nurselogin, name='nurselogin'),
     path('userlogin', views.userlogin, name='userlogin'),
@@ -42,5 +43,7 @@ urlpatterns = [
     path('user_home', Userviews.user_home, name='user_home'),
     path('userprofile',Userviews.user_profile,name='userprofile'),
     path('userschedule',Userviews.user_view_schedule,name='userschedule'),
+    path('takeappointment/<int:id>/',Userviews.take_appointment,name='takeappointment'),
+    path('userviewappointment',Userviews.view_appoint,name='userviewappointment'),
 
 ]

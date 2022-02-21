@@ -1,7 +1,8 @@
 
 
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 
@@ -9,21 +10,29 @@ from django.shortcuts import render, redirect
 from proapp.forms import userregister,loginRegister,nurseregister
 from proapp.models import nurse
 
-
 def image(request):
     return render(request,'index.html')
+
+
+
 def home(request):
     return render(request,'homeindex.html')
+
 def login(request):
     return render(request,'login_index.html')
 
 
 def userform(request):
     return  render(request,'UserRegistrationindex.html')
+
+
 def nurselogin(request):
     return  render(request,'Nurselogin_index.html')
+
+
 def userlogin(request):
     return  render(request,'userlogin_index.html')
+
 
 def login_view(request):
     if request.method=='POST':
@@ -42,6 +51,7 @@ def login_view(request):
             messages.info(request,'invalid credentials')
     return render(request,'login_index.html')
 
+
 def nurse_register(request):
     login_form=loginRegister()
     nurse_form=nurseregister()
@@ -56,7 +66,7 @@ def nurse_register(request):
             nurse.login=login
             nurse.save()
             messages.info(request,'Nurse Registration Successfully')
-            return redirect('login')
+            return redirect('login_view')
 
     return render(request,'NurseRegistration.html',{'login_form':login_form,'nurse_form':nurse_form})
 
@@ -75,6 +85,9 @@ def user_register(request):
             user.login=login
             user.save()
             messages.info(request,'User Registration Successfully')
-            return redirect('login')
+            return redirect('login_view')
     return render(request, 'UserRegistration.html', {'login_form': login_form, 'user_form': user_form})
 
+def logout_view(request):
+    logout(request)
+    return redirect('login_view')

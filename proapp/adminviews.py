@@ -1,9 +1,9 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from proapp.forms import hospitalform, vaccineform, reportcardform, nurseregister
 from proapp.models import nurse, User, hospital, vaccine, complaints, reportcard
-
 
 def add_hospital(request):
     form=hospitalform()
@@ -14,7 +14,6 @@ def add_hospital(request):
             messages.info(request,'successfully added')
             return redirect('admin_home')
     return render(request,'admin_temp/add_hospital.html',{'form':form})
-
 
 def view_nurse(request):
     data=nurse.objects.all()
@@ -81,7 +80,6 @@ def delete_hospital(request,id=None):
     data.delete()
     return redirect('viewhospital')
 
-
 def update_hospital(request,id):
     n=hospital.objects.get(id=id)
     if request.method=='POST':
@@ -91,13 +89,12 @@ def update_hospital(request,id):
             return redirect('viewhospital')
     else:
         form=hospitalform(request.POST or None,instance=n)
-    return render(request,'add_hospital.html',{'form':form})
+    return render(request,'admin_temp/add_hospital.html',{'form':form})
 
 def delete_user(request,id=None):
     data =User.objects.get(id=id)
     data.delete()
     return redirect('viewuser')
-
 
 def update_vaccine(request,id):
     n=vaccine.objects.get(id=id)
@@ -108,13 +105,13 @@ def update_vaccine(request,id):
             return redirect('viewvaccine')
     else:
         form=vaccineform(request.POST or None,instance=n)
-    return render(request,'vaccine_update.html',{'form':form})
+    return render(request,'admin_temp/vaccine_update.html',{'form':form})
+
 
 def delete_vaccine(request,id=None):
     data =vaccine.objects.get(id=id)
     data.delete()
     return redirect('viewvaccine')
-
 
 def reply_complaint(request, id):
     complaint=complaints.objects.get(id=id)
@@ -124,7 +121,7 @@ def reply_complaint(request, id):
         complaint.save()
         messages.info(request,'Reply send for complaint')
         return redirect('view_complaint')
-    return render(request,'reply_complaint.html',{'complaint':complaint})
+    return render(request,'admin_temp/reply_complaint.html',{'complaint':complaint})
 
 
 
