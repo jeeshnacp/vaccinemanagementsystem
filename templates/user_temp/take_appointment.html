@@ -1,4 +1,4 @@
-{% extends 'User_home.html' %}
+{% extends 'user_temp/User_home.html' %}
 {% load crispy_forms_filters %}
 {% block content %}
 
@@ -18,19 +18,19 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <label class="form-control-label">Hospital</label>
-                            <input required class="form-control" readonly value="{{schedule.Hospital}}">
+                            <input required class="form-control" readonly value="{{schedules.Hospital}}">
                         </div>
                          <div class="form-group">
                             <label class="form-control-label">Date</label>
-                            <input class="form-control" readonly value="{{schedule.date}}">
+                            <input class="form-control" readonly value="{{schedules.date}}">
                         </div>
                         <div class="form-group">
                             <label class="form-control-label">StartTime</label>
-                            <input class="form-control" readonly value="{{schedule.start_time}}">
+                            <input class="form-control" readonly value="{{schedules.start_time}}">
                         </div>
                         <div class="form-group">
                             <label class="form-control-label">EndTime</label>
-                            <input class="form-control" readonly value="{{schedule.end_time}}">
+                            <input class="form-control" readonly value="{{schedules.end_time}}">
                         </div>
                         <div class="form-actions form-group">
                             <button type="submit" class="btn btn-primary">SUBMIT</button>

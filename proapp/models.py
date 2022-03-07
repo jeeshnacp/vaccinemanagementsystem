@@ -25,23 +25,33 @@ class nurse(models.Model):
     def __str__(self):
         return self.Nurse_Name
 
-class User(models.Model):
+class customer(models.Model):
 
-    user=models.ForeignKey(Login,on_delete=models.CASCADE,null=True)
+    user=models.OneToOneField(Login,on_delete=models.CASCADE,null=True)
     Name=models.CharField(max_length=20)
     contact_no = models.IntegerField()
     Address=models.TextField()
     child_name=models.CharField(max_length=20)
     child_age=models.IntegerField()
     child_gender=models.CharField(max_length=20)
-    recent_vaccinations=models.TextField()
+    recent_vaccinations=models.TextField(null=True,blank=True)
 
     def __str__(self):
         return self.Name
 
+class vaccine(models.Model):
+    vaccine_name=models.CharField(max_length=50)
+    vaccine_type=models.CharField(max_length=50)
+    description=models.TextField()
+    approvel_status=models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.vaccine_name
+
+
 class reportcard(models.Model):
-    vaccine=models.CharField(max_length=20)
-    patient=models.CharField(max_length=20)
+    vaccine=models.ForeignKey(vaccine,on_delete=models.DO_NOTHING)
+    patient=models.ForeignKey(customer,on_delete=models.DO_NOTHING)
 
 
 class schedule(models.Model):
@@ -52,25 +62,19 @@ class schedule(models.Model):
 
 
 
-class vaccine(models.Model):
-    vaccine_name=models.CharField(max_length=50)
-    vaccine_type=models.CharField(max_length=50)
-    description=models.TextField()
-
-    def __str__(self):
-        return self.vaccine_name
 
 class appointment(models.Model):
-    user=models.CharField(max_length=20)
-    schedule=models.DateField()
+    user=models.ForeignKey(customer,on_delete=models.CASCADE,null=True)
+    schedule=models.ForeignKey(schedule,on_delete=models.CASCADE,null=True)
     vaccine_name=models.CharField(max_length=20)
     vaccinated=models.CharField(max_length=20)
-    status=models.CharField(max_length=20)
+    status=models.BooleanField(default=False)
 
 
 
 class complaints(models.Model):
-    users=models.ForeignKey(Login,on_delete=models.CASCADE,null=True)
+    user=models.ForeignKey(customer,on_delete=models.CASCADE,null=True)
+
     subject=models.CharField(max_length=50)
     complaint=models.CharField(max_length=50)
     date=models.DateField()

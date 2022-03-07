@@ -5,7 +5,7 @@ from . models import *
 admin.site.register(Login)
 admin.site.register(hospital)
 admin.site.register(nurse)
-admin.site.register(User)
+admin.site.register(customer)
 admin.site.register(reportcard)
 admin.site.register(schedule)
 admin.site.register(vaccine)

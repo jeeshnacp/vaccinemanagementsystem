@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% extends 'user_temp/user_home.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    <meta name="description" content="Colorlib Templates">-->
+<!--    <meta name="author" content="Colorlib">-->
+<!--    <meta name="keywords" content="Colorlib Templates">-->
+
+<!--    &lt;!&ndash; Title Page&ndash;&gt;-->
+<!--    <title>Au Register Forms by Colorlib</title>-->
+
+<!--    &lt;!&ndash; Icons font CSS&ndash;&gt;-->
+<!--    <link href="{% static 'assetspro/vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">-->
+<!--    <link href="{% static 'assetspro/vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">-->
+<!--    &lt;!&ndash; Font special for pages&ndash;&gt;-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">-->
+
+<!--    &lt;!&ndash; Vendor CSS&ndash;&gt;-->
+<!--    <link href="{% static 'assetspro/vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">-->
+<!--    <link href="{% static 'assetspro/vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">-->
+
+<!--    &lt;!&ndash; Main CSS&ndash;&gt;-->
+<!--    <link href="{% static 'assetspro/css/main.css' %}" rel="stylesheet" media="all">-->
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2>Profile</h2>
+                    {% for i in profile %}
+                    <ul>
+                        <li>Name:{{i.Name}}</li>
+                        <li>Contact_no:{{i.contact_no}}</li>
+                        <li>Address:{{i.Address}}</li>
+                        <li>child_name:{{i.child_name}}</li>
+                        <li>child_age:{{i.child_age}}</li>
+                        <li>child_gender:{{i.child_gender}}</li>
+
+                    </ul>
+                    {% endfor %}
+
+
+
+
+
+<!--                    </ul>-->
+
+
+<!--                    <h2 class="title">Registration Info</h2>-->
+<!--&lt;!&ndash;&lt;!&ndash;&ndash;&gt;-->
+<!--                    <form method="POST">-->
+<!--                        {% csrf_token %}-->
+<!--                        <div class="input-group">-->
+<!--&lt;!&ndash;&ndash;&gt;-->
+<!--                            Name:{{u.Name}}-->
+<!--&lt;!&ndash;                            <input class="input&#45;&#45;style-3" type="text" placeholder="Name" name="name">&ndash;&gt;-->
+<!--                        </div>-->
+<!--                        <div class="input-group">-->
+<!--                            contact_no:{{u.contact_no}}-->
+<!--&lt;!&ndash;                            <input class="input&#45;&#45;style-3 js-datepicker" type="text" placeholder="Birthdate" name="birthday">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                        <div class="input-group">-->
+<!--                            Address:{{u.Address}}-->
+<!--&lt;!&ndash;                            <div class="rs-select2 js-select-simple select&#45;&#45;no-search">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <select name="gender">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <option disabled="disabled" selected="selected">Gender</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <option>Male</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <option>Female</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <option>Other</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </select>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="select-dropdown"></div>&ndash;&gt;-->
+<!--                            </div>-->
+
+<!--                         <div class="input-group">-->
+<!--                            child_name:{{u.child_name}}-->
+<!--&lt;!&ndash;&lt;!&ndash;                   &ndash;&gt;-->
+<!--                        </div>-->
+
+<!--                        <div class="input-group">-->
+<!--                            child_age:{{u.child_age}}-->
+<!--&lt;!&ndash;&lt;!&ndash;                   &ndash;&gt;-->
+<!--                        </div>-->
+
+<!--                        <div class="input-group">-->
+<!--                            child_gender:{{u.child_gender}}-->
+<!--&lt;!&ndash;                            <div class="rs-select2 js-select-simple select&#45;&#45;no-search">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <select name="gender">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <option disabled="disabled" selected="selected">Gender</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <option>Male</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <option>Female</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <option>Other</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </select>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="select-dropdown"></div>&ndash;&gt;-->
+<!--                            </div>-->
+
+
+<!--&lt;!&ndash;                        <div class="input-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <input class="input&#45;&#45;style-3" type="email" placeholder="Email" name="email">&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="input-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <input class="input&#45;&#45;style-3" type="text" placeholder="Phone" name="phone">&ndash;&gt;-->
+<!--                        </div>-->
+<!--                        <div class="p-t-10">-->
+<!--                            <button class="btn btn&#45;&#45;pill btn&#45;&#45;green" type="submit">Submit</button>-->
+<!--                        </div>-->
+<!--                    </form>-->
+                </div>
+            </div>
+<!--        </div>-->
+<!--    </div>-->
+
+    <!-- Jquery JS-->
+<!--    <script src="{% static 'assetspro/vendor/jquery/jquery.min.js' %}"></script>-->
+<!--    &lt;!&ndash; Vendor JS&ndash;&gt;-->
+<!--    <script src="{% static 'assetspro/vendor/select2/select2.min.js' %}"></script>-->
+<!--    <script src="{% static 'assetspro/vendor/datepicker/moment.min.js' %}"></script>-->
+<!--    <script src="{% static 'assetspro/vendor/datepicker/daterangepicker.js' %}"></script>-->
+
+<!--    &lt;!&ndash; Main JS&ndash;&gt;-->
+<!--    <script src="{% static 'assetspro/js/global.js' %}"></script>-->
+            </div>
+        </div>
+    </div>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
+{% endblock %}

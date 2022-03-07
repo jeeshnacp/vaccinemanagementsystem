@@ -11,7 +11,7 @@ from proapp.forms import userregister,loginRegister,nurseregister
 from proapp.models import nurse
 
 def image(request):
-    return render(request,'index.html')
+    return render(request,'admin_temp/index.html')
 
 
 

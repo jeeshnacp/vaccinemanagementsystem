@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'admin_temp/index.html' %}
 {% block content %}
 {% load static %}
 
@@ -46,7 +46,7 @@
 						      <td>{{i.date}}</td>
 						      <td>{{i.complaint}}</td>
 								<td>
-									{% if i.reply == None %}
+									{% if i.Reply == None %}
 
 									<a href="{% url 'reply_complaint' i.id %}"><button type="submit" class="btn btn-primary">Reply Now</button></a>
 									{% else %}

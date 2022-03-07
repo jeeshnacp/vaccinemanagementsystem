@@ -1,6 +1,5 @@
-{% extends 'index.html' %}
+{% extends 'admin_temp/index.html' %}
 {% block content %}
-<!doctype html>
 {% load static %}
 
 <html lang="en">
@@ -17,7 +16,18 @@
 
 	</head>
 	<body>
-<!--	<div class="card" >-->
+	<div class="card" >
+<br><br>
+<div class="row">
+	<div class="col-md-12">
+		<form method="get" class="form-inline" style="float:right">
+			<div class="md-form my-0">
+				{{vaccinefilter.form}}
+				<button class="btn btn-primary mr-2" type="submit">search</button>
+			</div>
+		</form>
+	</div>
+</div>
 
 	<section class="ftco-section">
 		<div class="container">
@@ -41,7 +51,7 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-						  {% for i in data %}
+						  {% for i in vaccinefilter.qs %}
 						    <tr class="alert" role="alert">
 <!--						      <th scope="row">001</th>-->
 						      <td>{{i.vaccine_name}}</td>

@@ -1,9 +1,8 @@
-{% extends 'index.html' %}
+{% extends 'user_temp/User_home.html' %}
 {% block content %}
-<!doctype html>
 {% load static %}
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
   	<title>Table 02</title>
     <meta charset="utf-8">
@@ -23,7 +22,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">View Reportcard</h2>
+					<h2 class="heading-section">View Schedule</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -32,17 +31,28 @@
 						<table class="table">
 						  <thead class="thead-dark">
 						    <tr>
-						      <th>vaccine</th>
-						      <th>patient</th>
-
+						      <th>Hospital</th>
+						      <th>Date</th>
+						      <th>Start_time</th>
+								<th>End_time</th>
+<!--								<th>Take Appointment</th>-->
+<!--								<th>Update</th>-->
+<!--								<th>Delete</th>-->
+<!---->
 						    </tr>
 						  </thead>
 						  <tbody>
 						  {% for i in data %}
 						    <tr class="alert" role="alert">
 <!--						      <th scope="row">001</th>-->
-						      <td>{{i.vaccine}}</td>
-						      <td>{{i.patient}}</td>
+						      <td>{{i.Hospital}}</td>
+						      <td>{{i.date}}</td>
+						      <td>{{i.start_time}}</td>
+								<td>{{i.end_time}}</td>
+<!--								<td><button type="submit"><a href="{% url 'takeappointment' i.id %}">Book Appointment</button></a></td>-->
+<!--								<td><a href="{% url 'updateschedule' i.id %}"><button class="btn btn-success">Update</button></a></td>-->
+<!--&lt;!&ndash;&ndash;&gt;                        	<td><a href="{% url 'deleteschedule' i.id %}"><button class="btn btn-success">Delete</button></a></td>-->
+
 <!--						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">-->
 <!--				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>-->
 <!--				          	</a>-->

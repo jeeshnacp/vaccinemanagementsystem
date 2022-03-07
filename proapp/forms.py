@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from proapp.models import Login,nurse, hospital, User, vaccine, complaints, schedule, reportcard
+from proapp.models import Login,nurse, hospital, customer, vaccine, complaints, schedule, reportcard
 
 
 
@@ -38,7 +38,7 @@ class hospitalform(forms.ModelForm):
 
 class userregister(forms.ModelForm):
     class Meta:
-        model= User
+        model= customer
         fields=('Name','contact_no','Address','child_name','child_age','child_gender')
 
 class vaccineform(forms.ModelForm):
