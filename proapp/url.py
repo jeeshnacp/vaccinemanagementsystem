@@ -27,6 +27,11 @@ urlpatterns = [
     path('deletevaccine/<int:id>/', adminviews.delete_vaccine, name='deletevaccine'),
     path('viewcomplaints', adminviews.view_complaints, name='viewcomplaints'),
     path('reply_complaint/<int:id>/', adminviews.reply_complaint, name='reply_complaint'),
+    path('approve/<int:id>/',adminviews.approve_appointment,name='approve'),
+    path('reject/<int:id>',adminviews.reject_appointment,name='reject'),
+    path('appointments',adminviews.appointments,name='appointments'),
+    path('vaccinestatus',adminviews.vaccinestatus,name='vaccinestatus'),
+
 
     path('nurse_home', Nurseviews.nurse_home, name='nurse_home'),
     path('addcomplaints', Nurseviews.add_complaints, name='addcomplaints'),
@@ -49,6 +54,5 @@ urlpatterns = [
     path('userviewappointment',Userviews.view_appoint,name='userviewappointment'),
     path('userviewreport',Userviews.user_report,name='userviewreport'),
     path('addcomplaint',Userviews.add_complaint, name='addcomplaint'),
-    path('viewappointment', Userviews.viewappoint, name='viewappointment'),
 
 ]

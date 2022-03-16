@@ -1,4 +1,4 @@
-{% extends 'user_temp/User_home.html' %}
+{% extends 'admin_temp/index.html' %}
 {% block content %}
 {% load static %}
 
@@ -22,7 +22,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">View Schedule</h2>
+					<h2 class="heading-section">View appointments</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -32,6 +32,7 @@
 						  <thead class="thead-dark">
 						    <tr>
 						      <th>Hospital</th>
+								<th>Place</th>
 						      <th>Date</th>
 						      <th>Start_time</th>
 								<th>End_time</th>
@@ -40,19 +41,18 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-						  {% for i in appointment %}
+						  {% for i in data %}
 						    <tr class="alert" role="alert">
 						      <td>{{i.schedule.Hospital}}</td>
+								<td>{{i.schedule.Hospital.place}}</td>
 						      <td>{{i.schedule.date}}</td>
 						      <td>{{i.schedule.start_time}}</td>
 								<td>{{i.schedule.end_time}}</td>
 								<td>
-									{% if i.status == 0 %}
-									<button type="button" class="btn btn-warning">Approval Pending</button>
-									{% elif i.status == 1 %}
-									<button type="button" class="btn btn-primary">Accepted</button>
-									{% else %}
-									<button type="button"class="btn btn-danger">Rejected</button>
+									{% if i.vaccinated == False %}
+									<button type="button" class="btn btn-warning">Un availed</button>
+									{% elif i.vaccinated == True %}
+									<button type="button" class="btn btn-primary">Vaccinated</button>
 									{% endif %}
 								</td>
 							</tr>

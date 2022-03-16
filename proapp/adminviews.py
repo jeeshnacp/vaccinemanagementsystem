@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 
 from proapp.filter import HospitalFilter, NurseFilter, UserFilter, VaccineFilter
 from proapp.forms import hospitalform, vaccineform, reportcardform, nurseregister
-from proapp.models import nurse, customer, hospital, vaccine, complaints, reportcard
+from proapp.models import nurse, customer, hospital, vaccine, complaints, reportcard, appointment
 
 
 def add_hospital(request):
@@ -27,8 +27,6 @@ def view_nurse(request):
         'nursefilter': nursefilter,
     }
     return render(request, 'admin_temp/ViewNurse.html', context)
-
-
 
 
 def view_user(request):
@@ -78,8 +76,6 @@ def view_vaccine(request):
 def view_complaints(request):
     data = complaints.objects.all()
     return render(request, 'admin_temp/View_complaints.html', {'data': data})
-
-
 
 
 def update_nurse(request, id):
@@ -151,3 +147,29 @@ def reply_complaint(request, id):
         messages.info(request, 'Reply send for complaint')
         return redirect('viewcomplaints')
     return render(request, 'admin_temp/reply_complaint.html', {'complaint': complaint})
+
+
+def approve_appointment(request, id):
+    n = appointment.objects.get(id=id)
+    n.status = 1
+    n.save()
+    messages.info(request, 'Appointment Confirmed')
+    return redirect('view_appointment')
+
+
+def reject_appointment(request, id):
+    n = appointment.objects.get(id=id)
+    n.status = 2
+    n.save()
+    messages.info(request, 'Appointment Rejected')
+    return redirect('view_appointment')
+
+
+def appointments(request):
+    data = appointment.objects.all()
+    return render(request, 'admin_temp/ApprovingAppointments.html', {'data': data})
+
+
+def vaccinestatus(request):
+    data = appointment.objects.all()
+    return render(request, 'admin_temp/vaccinationstatus.html', {'data': data})

@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 
 from proapp.filter import NVaccineFilter, NUserFilter, NHospitalFilter
 from proapp.forms import complaintform, scheduleform, reportcardform
-from proapp.models import vaccine, customer, hospital, schedule, complaints, reportcard
+from proapp.models import vaccine, customer, hospital, Schedule, complaints, reportcard
 
 
 def nurse_home(request):
@@ -68,11 +68,11 @@ def nurse_add_schedule(request):
     return render(request, 'nurse_temp/Nurse_Add_Schedule.html', {'form': form})
 
 def nurse_view_schedule(request):
-    data=schedule.objects.all()
+    data=Schedule.objects.all()
     return render(request,'nurse_temp/Nurse_View_Schedule.html',{'data':data})
 
 def update_schedule(request,id):
-    n=schedule.objects.get(id=id)
+    n=Schedule.objects.get(id=id)
     if request.method=='POST':
         form=scheduleform(request.POST or None,instance=n)
         if form.is_valid():
@@ -83,7 +83,7 @@ def update_schedule(request,id):
     return render(request,'nurse_temp/Nurse_Add_Schedule.html',{'form':form})
 
 def delete_schedule(request,id=None):
-    data =schedule.objects.get(id=id)
+    data =Schedule.objects.get(id=id)
     data.delete()
     return redirect('viewschedule')
 

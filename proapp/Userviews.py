@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from proapp.forms import complaintform
-from proapp.models import customer, schedule, appointment, reportcard
+from proapp.models import customer, Schedule, appointment, reportcard
 
 
 def user_home(request):
@@ -19,38 +19,38 @@ def user_profile(request):
 
 
 def user_view_schedule(request):
-    data = schedule.objects.all()
+    data = Schedule.objects.all()
     return render(request, 'user_temp/User_View_Schedule.html', {'data': data})
 
 
 def schedule_user(request):
-    s = schedule.objects.all()
+    s = Schedule.objects.all()
 
     return render(request, 'user_temp/User_View_Schedule.html', {'s': s})
 
 
 def take_appointment(request, id):
-    schedules = schedule.objects.get(id=id)
+    schedule = Schedule.objects.get(id=id)
     u = customer.objects.get()
-    appointments = appointment.objects.filter(user=u, schedule=schedules)
+    appointments = appointment.objects.filter(user=u, schedule=schedule)
     if appointments.exists():
         messages.info(request, 'you have already requested appointment for this schedule')
-        return redirect('userschedule')
+        return redirect('userviewappointment')
     else:
         if request.method == 'POST':
             obj = appointment()
             obj.user = u
-            obj.schedules = schedules
+            obj.schedule = schedule
             obj.save()
             messages.info(request, 'appointment booked successfully')
-            return redirect('viewappointment')
-    return render(request, 'user_temp/take_appointment.html', {'schedules': schedules})
+            return redirect('userviewappointment')
+    return render(request, 'user_temp/take_appointment.html', {'schedules': schedule})
 
 
 def view_appoint(request):
-    u = customer.objects.get(user=request.user)
+    u = customer.objects.get()
     a = appointment.objects.filter(user=u)
-    return render(request, 'user_temp/userview_appointment.html', {'a': a})
+    return render(request, 'user_temp/userview_appointment.html', {'appointment': a})
 
 
 def user_report(request):
@@ -72,7 +72,3 @@ def add_complaint(request):
         form = complaintform()
     return render(request, 'user_temp/add_complaints.html', {'form': form})
 
-def viewappoint(request):
-    s = reportcard.objects.all()
-
-    return render(request, 'user_temp/view_appointment.html', {'s': s})
