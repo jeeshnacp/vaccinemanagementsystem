@@ -44,8 +44,6 @@ urlpatterns = [
     path('deleteschedule/<int:id>/', Nurseviews.delete_schedule, name='deleteschedule'),
     path('addreportcard', Nurseviews.add_reportcard, name='addreportcard'),
     path('viewreportcard', Nurseviews.view_reportcard, name='viewreportcard'),
-    path('updatereportcard/<int:id>/', Nurseviews.update_reportcard, name='updatereportcard'),
-    path('deletereportcard/<int:id>/', Nurseviews.delete_reportcard, name='deletereportcard'),
 
     path('user_home', Userviews.user_home, name='user_home'),
     path('userprofile',Userviews.user_profile,name='userprofile'),

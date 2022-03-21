@@ -111,7 +111,7 @@ def update_reportcard(request,id):
             return redirect('viewreportcard')
     else:
         form=reportcardform(request.POST or None,instance=n)
-    return render(request,'nurse_temp/add_reportcard.html',{'form':form})
+    return render(request,'nurse_temp/update_add_reportcard.html',{'form':form})
 
 def delete_reportcard(request,id=None):
     data =reportcard.objects.get(id=id)

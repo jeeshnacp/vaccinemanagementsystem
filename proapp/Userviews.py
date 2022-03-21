@@ -31,8 +31,8 @@ def schedule_user(request):
 
 def take_appointment(request, id):
     schedule = Schedule.objects.get(id=id)
-    u = customer.objects.get()
-    appointments = appointment.objects.filter(user=u, schedule=schedule)
+    u = customer.objects.get(user=request.user)
+    appointments = appointment.objects.filter(user=u,schedule=schedule)
     if appointments.exists():
         messages.info(request, 'you have already requested appointment for this schedule')
         return redirect('userviewappointment')
@@ -48,7 +48,7 @@ def take_appointment(request, id):
 
 
 def view_appoint(request):
-    u = customer.objects.get()
+    u = customer.objects.get(user=request.user)
     a = appointment.objects.filter(user=u)
     return render(request, 'user_temp/userview_appointment.html', {'appointment': a})
 

@@ -32,8 +32,11 @@
 						<table class="table">
 						  <thead class="thead-dark">
 						    <tr>
-						      <th>vaccine</th>
-						      <th>patient</th>
+						      <th>child_name</th>
+						      <th>child_age</th>
+								<th>child_gender</th>
+								<th>Address</th>
+								<th>vaccine_name</th>
 
 						    </tr>
 						  </thead>
@@ -41,8 +44,12 @@
 						  {% for i in data %}
 						    <tr class="alert" role="alert">
 <!--						      <th scope="row">001</th>-->
-						      <td>{{i.vaccine}}</td>
-						      <td>{{i.patient}}</td>
+						      <td>{{i.patient.child_name}}</td>
+								<td>{{i.patient.child_age}}</td>
+								<td>{{i.patient.child_gender}}</td>
+								<td>{{i.patient.Address}}</td>
+								<td>{{i.vaccine.vaccine_name}}</td>
+
 <!--						      	<a href="#" class="close" data-dismiss="alert" aria-label="Close">-->
 <!--				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>-->
 <!--				          	</a>-->

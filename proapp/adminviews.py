@@ -154,7 +154,7 @@ def approve_appointment(request, id):
     n.status = 1
     n.save()
     messages.info(request, 'Appointment Confirmed')
-    return redirect('view_appointment')
+    return redirect('appointments')
 
 
 def reject_appointment(request, id):
@@ -162,7 +162,7 @@ def reject_appointment(request, id):
     n.status = 2
     n.save()
     messages.info(request, 'Appointment Rejected')
-    return redirect('view_appointment')
+    return redirect('appointments')
 
 
 def appointments(request):
