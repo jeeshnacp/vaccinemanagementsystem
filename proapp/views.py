@@ -60,7 +60,7 @@ def nurse_register(request):
             user.is_nurse=True
             user.save()
             nurse=nurse_form.save(commit=False)
-            nurse.login=login
+            nurse.user=user
             nurse.save()
             messages.info(request,'Nurse Registration Successfully')
             return redirect('login_view')
@@ -79,7 +79,7 @@ def user_register(request):
             user.is_user=True
             user.save()
             customer=user_form.save(commit=False)
-            customer.login=login
+            customer.user=user
             customer.save()
             messages.info(request,'User Registration Successfully')
             return redirect('login_view')
