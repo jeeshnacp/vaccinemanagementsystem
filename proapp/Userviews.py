@@ -14,7 +14,9 @@ def user_home(request):
 
 
 def user_profile(request):
+    print('hi')
     profile = customer.objects.filter(user=request.user)
+    print(profile)
     return render(request, 'user_temp/user_profile.html', {'profile': profile})
 
 

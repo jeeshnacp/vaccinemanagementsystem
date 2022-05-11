@@ -18,9 +18,6 @@ def image(request):
 def home(request):
     return render(request,'homeindex.html')
 
-def login(request):
-    return render(request,'login_index.html')
-
 
 def userform(request):
     return  render(request,'UserRegistrationindex.html')
@@ -40,7 +37,7 @@ def login_view(request):
         password=request.POST.get('pass')
         user=authenticate(request,username=username,password=password)
         if user is not None:
-            login(request)
+            login(request,user)
             if user.is_staff:
                return redirect('admin_home')
             elif user.is_nurse:
@@ -59,9 +56,9 @@ def nurse_register(request):
         login_form=loginRegister(request.POST)
         nurse_form=nurseregister(request.POST)
         if login_form.is_valid() and nurse_form.is_valid():
-            login=login_form.save(commit=False)
-            login.is_nurse=True
-            login.save()
+            user=login_form.save(commit=False)
+            user.is_nurse=True
+            user.save()
             nurse=nurse_form.save(commit=False)
             nurse.login=login
             nurse.save()
@@ -78,12 +75,12 @@ def user_register(request):
         login_form=loginRegister(request.POST)
         user_form=userregister(request.POST)
         if login_form.is_valid() and user_form.is_valid():
-            login=login_form.save(commit=False)
-            login.is_user=True
-            login.save()
-            user=user_form.save(commit=False)
-            user.login=login
+            user=login_form.save(commit=False)
+            user.is_user=True
             user.save()
+            customer=user_form.save(commit=False)
+            customer.login=login
+            customer.save()
             messages.info(request,'User Registration Successfully')
             return redirect('login_view')
     return render(request, 'UserRegistration.html', {'login_form': login_form, 'user_form': user_form})

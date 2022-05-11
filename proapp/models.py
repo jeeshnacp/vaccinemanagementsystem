@@ -19,7 +19,7 @@ class hospital(models.Model):
 
 
 class nurse(models.Model):
-    user = models.ForeignKey(Login, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(Login, on_delete=models.CASCADE,related_name='nurse')
     Nurse_Name = models.CharField(max_length=20)
     Contact_no = models.CharField(max_length=50)
     Address = models.TextField()
@@ -31,14 +31,14 @@ class nurse(models.Model):
 
 
 class customer(models.Model):
-    user = models.OneToOneField(Login, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(Login, on_delete=models.CASCADE,related_name='customer')
     Name = models.CharField(max_length=20)
     contact_no = models.IntegerField()
     Address = models.TextField()
     child_name = models.CharField(max_length=20)
     child_age = models.IntegerField()
     child_gender = models.CharField(max_length=20)
-    recent_vaccinations = models.TextField(null=True, blank=True)
+    recent_vaccinations = models.TextField()
 
     def __str__(self):
         return self.Name
@@ -75,7 +75,7 @@ class appointment(models.Model):
 
 
 class complaints(models.Model):
-    user = models.ForeignKey(customer, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(customer, on_delete=models.CASCADE)
 
     subject = models.CharField(max_length=50)
     complaint = models.CharField(max_length=50)
